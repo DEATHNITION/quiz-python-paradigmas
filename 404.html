@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>404</title>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 14 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h10v1H1v14h1v1H0zM10 4h4v3h-1V5h-3zM14 16v-6h-1v5H8v1z' fill='black'/%3E%3Cpath d='M12 14v-3h-1v2H9v1z' fill='%23bcbcc3'/%3E%3Cpath d='M10 0h1v1h1v1h1v1h1v1h-1V3h-1V2h-1v2h-1z' fill='%23878787'/%3E%3Cpath d='M2 2h8v3h2v2H8v5H6v1H4v1H2z' fill='%23bcbcc3'/%3E%3Cpath d='M5 3h2v3H4V4h1v1h1V4H5z' fill='%2300891e'/%3E%3Cpath d='M5 4h1v1H5z' fill='%2300f248'/%3E%3Cpath d='M7 4h1v2H7v1H5V6h2zM8 7h3v2h-1V8H9v1h1v1H8z' fill='black'/%3E%3Cpath d='M9 8h1v1H9z' fill='%2300fbfe'/%3E%3Cpath d='M10 9h1v1h-1z' fill='%23003293'/%3E%3Cpath d='M11 7h1v2h-1zM8 10h2v1H8z' fill='black'/%3E%3Cpath d='M3 8h1v1h1v1h1v1h1v1H6v-1H5v-1H4v-1H3z' fill='%23ff3900'/%3E%3Cpath d='M3 9h1v1h1v1h1v1H3z' fill='%23f73ae1'/%3E%3Cpath d='M3 12h3v1H3z' fill='black'/%3E%3C/svg%3E">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink:#0a0907;
+  --text:#e8e0cc;
+  --text2:#9e9278;
+  --gold:#c9a85c;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--ink);
+  color:var(--text);
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  transition:filter .12s, opacity .12s;
+}
+
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity:.03;
+  pointer-events:none;
+}
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.03) 0px,
+    rgba(255,255,255,.03) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  animation:scan 6s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes scan{
+  from{transform:translateY(0)}
+  to{transform:translateY(10px)}
+}
+
+#cursor-glow{
+  position:fixed;
+  width:600px;height:600px;
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(201,168,92,.05), transparent 65%);
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  transition:opacity .1s;
+}
+
+.wrap{
+  text-align:center;
+  position:relative;
+}
+
+.glitch-svg{
+  width:100%;
+  max-width:420px;
+  filter:url(#glitchFilter);
+  position:relative;
+}
+
+.ghost{
+  position:absolute;
+  inset:0;
+  opacity:.06;
+  transform:translate(3px,-2px);
+  pointer-events:none;
+}
+
+.desc{
+  margin-top:20px;
+  font-size:13px;
+  color:var(--text2);
+  letter-spacing:.05em;
+  transition:transform .08s, opacity .08s;
+}
+
+.btn{
+  margin-top:36px;
+  padding:14px 26px;
+  border:1px solid rgba(201,168,92,.25);
+  background:rgba(201,168,92,.08);
+  color:var(--gold);
+  border-radius:8px;
+  font-family:'DM Mono',monospace;
+  font-size:11px;
+  letter-spacing:.14em;
+  cursor:pointer;
+  transition:transform .1s, border-color .2s;
+}
+
+.btn.fail{
+  animation:failClick .25s ease;
+}
+
+@keyframes failClick{
+  0%{transform:rotate(0deg) scale(1)}
+  25%{transform:rotate(-3deg) scale(0.98)}
+  50%{transform:rotate(3deg) scale(1.02)}
+  75%{transform:rotate(-2deg)}
+  100%{transform:rotate(0deg)}
+}
+
+.glitch-active .desc,
+.glitch-active .btn{
+  transform:translateX(calc(var(--g)*1px));
+}
+
+.flicker{
+  filter:brightness(.8) contrast(1.2);
+}
+</style>
+</head>
+
+<body>
+
+<div id="cursor-glow"></div>
+
+<div class="wrap" id="wrap">
+
+  <svg class="glitch-svg" viewBox="0 0 600 220">
+    <defs>
+      <filter id="glitchFilter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="2" seed="2" result="noise"/>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+
+    <text id="mainText"
+      x="50%" y="60%" text-anchor="middle"
+      font-size="160"
+      font-family="Playfair Display"
+      font-weight="900"
+      fill="#e8e0cc">
+      404
+    </text>
+  </svg>
+
+  <div class="desc" id="desc"></div>
+
+  <button class="btn" id="btn">voltar ao início</button>
+
+</div>
+
+<script>
+const glow=document.getElementById('cursor-glow');
+const wrap=document.getElementById('wrap');
+const btn=document.getElementById('btn');
+const desc=document.getElementById('desc');
+const text=document.getElementById('mainText');
+
+let path = window.location.pathname;
+
+if(path.endsWith('404.html') || path === '/' || path === ''){
+  path = '/unknown';
+}
+
+desc.textContent = `endpoint ${path} não encontrado`;
+
+let offsetX=0, offsetY=0;
+
+setInterval(()=>{
+  offsetX=(Math.random()*6-3);
+  offsetY=(Math.random()*6-3);
+},1200);
+
+window.addEventListener('mousemove',e=>{
+  glow.style.left=(e.clientX+offsetX)+'px';
+  glow.style.top=(e.clientY+offsetY)+'px';
+});
+
+setInterval(()=>{
+  if(Math.random()>0.85){
+    glow.style.opacity="0";
+    setTimeout(()=>glow.style.opacity="1",80);
+  }
+},500);
+
+const filter=document.querySelector('feDisplacementMap');
+const turbulence=document.querySelector('feTurbulence');
+
+let intensity=0;
+
+function glitchBurst(){
+  let frames=0;
+
+  intensity+=0.12;
+  if(intensity>1) intensity=1;
+  intensity*=0.97;
+
+  wrap.classList.add('glitch-active');
+
+  const interval=setInterval(()=>{
+    frames++;
+
+    const scale=(Math.random()*60)*intensity;
+    const freq=(Math.random()*0.05+0.005)*intensity;
+    const shift=(Math.random()*10-5)*intensity;
+
+    document.documentElement.style.setProperty('--g',shift);
+
+    filter.setAttribute('scale',scale);
+    turbulence.setAttribute('baseFrequency',freq);
+
+    if(Math.random()>0.75) ghostFrame();
+    if(Math.random()>0.7) textDesync();
+    if(Math.random()>0.85) signalDrop();
+    if(Math.random()>0.8) flicker();
+    if(Math.random()>0.9) frameDrop();
+
+    if(frames>6){
+      filter.setAttribute('scale',0);
+      wrap.classList.remove('glitch-active');
+      clearInterval(interval);
+    }
+  },60);
+}
+
+function ghostFrame(){
+  const ghost=text.cloneNode(true);
+  ghost.setAttribute('class','ghost');
+  text.parentNode.appendChild(ghost);
+  setTimeout(()=>ghost.remove(),80);
+}
+
+function textDesync(){
+  text.setAttribute('dx',Math.random()*10-5);
+  setTimeout(()=>text.setAttribute('dx',0),80);
+}
+
+function signalDrop(){
+  document.body.style.opacity=.2;
+  setTimeout(()=>document.body.style.opacity=1,70);
+}
+
+function flicker(){
+  document.body.classList.add('flicker');
+  setTimeout(()=>document.body.classList.remove('flicker'),80);
+}
+
+function frameDrop(){
+  text.style.opacity=0;
+  setTimeout(()=>text.style.opacity=1,60);
+}
+
+function microFreeze(){
+  const t=document.body.style.transform;
+  document.body.style.transform='scale(1.001)';
+  setTimeout(()=>document.body.style.transform=t,50);
+}
+
+function randomInterval(fn,min,max){
+  function run(){
+    fn();
+    setTimeout(run,Math.random()*(max-min)+min);
+  }
+  run();
+}
+
+randomInterval(()=>{
+  glitchBurst();
+  if(Math.random()>0.6) microFreeze();
+},600,1100);
+
+window.addEventListener('wheel', e=>{
+  if(Math.random()>0.7){
+    e.preventDefault();
+    microFreeze();
+  }
+},{ passive:false });
+
+const originalText=desc.textContent;
+let corruptionIndex=0;
+let corruptionSpeed=300;
+
+setTimeout(()=>{
+  function corruptStep(){
+    let arr=originalText.split('');
+
+    for(let i=0;i<corruptionIndex;i++){
+      const chars="█▓▒░<>/\\[]{}01";
+      arr[i]=chars[Math.floor(Math.random()*chars.length)];
+    }
+
+    desc.textContent=arr.join('');
+
+    corruptionIndex++;
+
+    if(corruptionIndex<originalText.length){
+      corruptionSpeed*=0.85;
+      setTimeout(corruptStep,corruptionSpeed);
+    }else{
+      setInterval(()=>{
+        let output="";
+        const chars="█▓▒░<>/\\[]{}01";
+        for(let i=0;i<originalText.length;i++){
+          output+=chars[Math.floor(Math.random()*chars.length)];
+        }
+        desc.textContent=output;
+      },80);
+    }
+  }
+
+  corruptStep();
+},3000);
+
+setTimeout(()=>{
+  setInterval(()=>{
+    if(Math.random()>0.6){
+      btn.style.transform=`translateX(${Math.random()*6-3}px)`;
+      setTimeout(()=>btn.style.transform="",100);
+    }
+  },600);
+},5000);
+
+const originalTitle=document.title;
+
+setInterval(()=>{
+  if(Math.random()>0.7){
+    document.title="4█4";
+  }else{
+    document.title=originalTitle;
+  }
+},400);
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function errorBeep(){
+  const osc1 = audioCtx.createOscillator();
+  const osc2 = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+
+  osc1.type="sawtooth";
+  osc2.type="square";
+
+  osc1.frequency.setValueAtTime(200,audioCtx.currentTime);
+  osc1.frequency.exponentialRampToValueAtTime(40,audioCtx.currentTime+0.15);
+
+  osc2.frequency.setValueAtTime(80,audioCtx.currentTime);
+
+  gain.gain.setValueAtTime(0.15,audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001,audioCtx.currentTime+0.2);
+
+  osc1.connect(gain);
+  osc2.connect(gain);
+  gain.connect(audioCtx.destination);
+
+  osc1.start();
+  osc2.start();
+
+  osc1.stop(audioCtx.currentTime+0.2);
+  osc2.stop(audioCtx.currentTime+0.2);
+}
+
+let clicks=0;
+
+btn.onclick=()=>{
+  clicks++;
+
+  if(clicks===1){
+    microFreeze();
+    errorBeep();
+    btn.classList.add('fail');
+    setTimeout(()=>btn.classList.remove('fail'),250);
+    return;
+  }
+
+  setTimeout(()=>{
+    window.location.href='/';
+  },120);
+};
+</script>
+
+</body>
+</html>
