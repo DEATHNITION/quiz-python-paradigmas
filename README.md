@@ -54,7 +54,6 @@ O trabalho foi desenvolvido com o objetivo de unir dois aprendizados:
 - Download direto do `quiz_gabriel.py` e `quiz_gabriel.txt`
 - Visualização completa do código-fonte com botão de copiar
 - Seção detalhada de conceitos Python usados no código
-- Integração com Google Sheets para registro de tentativas
 - Seção de transparência sobre o uso de IA no desenvolvimento visual
 
 ---
